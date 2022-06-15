@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
     }); // Buscame la vista 'index.ejs' dentro de la carpeta 'views' y renderiza el contenido como HTML y enviáselo al cliente
 });
 
-app.get("/añadir-imagen", (req, res) => {
+app.get("/nueva-imagen", (req, res) => {
     res.send("Formulario de añadir imagen.");
 });
 
