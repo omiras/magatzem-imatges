@@ -9,8 +9,12 @@ const express = require('express');
 
 const pictures = [{
     titulo: "Me gustaría estar en Dinamarca",
-    url: "https://",
+    url: "https://i.picsum.photos/id/41/200/200.jpg?hmac=aqB5SyMLH-ssCBN-7HaUvcDxXFFQB42WoqAHsLRIn74",
     fecha: "2022-06-06"
+}, {
+    titulo: "Coche",
+    url: "https://i.picsum.photos/id/1071/200/200.jpg?hmac=mb6el6MCnRCyFnuMcCPJppn1WISnV5OKFUqDFg82Joo",
+    fecha: "2021-03-06"
 }];
 
 const app = express();
