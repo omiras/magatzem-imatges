@@ -8,13 +8,13 @@ const express = require('express');
 // (versiones futuras) color predominante
 
 const pictures = [{
-    titulo: "Me gustaría estar en Dinamarca",
+    title: "Me gustaría estar en Dinamarca",
     url: "https://i.picsum.photos/id/41/200/200.jpg?hmac=aqB5SyMLH-ssCBN-7HaUvcDxXFFQB42WoqAHsLRIn74",
-    fecha: "2022-06-06"
+    date: "2022-06-06"
 }, {
-    titulo: "Coche",
+    title: "Coche",
     url: "https://i.picsum.photos/id/1071/200/200.jpg?hmac=mb6el6MCnRCyFnuMcCPJppn1WISnV5OKFUqDFg82Joo",
-    fecha: "2021-03-06"
+    date: "2021-03-06"
 }];
 
 const app = express();
@@ -33,6 +33,14 @@ app.get("/", (req, res) => {
 app.get("/nueva-imagen", (req, res) => {
     res.send("Formulario de añadir imagen.");
 });
+
+app.post("/form", (req, res) => {
+    // 1. En el objeto req.body tienes toda la información que te ha enviado el formularo
+
+    // 2. Tienes que crear un nuevo elemento en el array "pictures", con dicha información
+
+    // 3. Mostrar un mensaje al usuario que diga "nueva imagne añadida" o redirigirle usando res.redirect a la página principal
+})
 
 // La función de callback se ejecutará en el caso que hayamos levantado con éxito el servidor.
 app.listen(3000, () => {
