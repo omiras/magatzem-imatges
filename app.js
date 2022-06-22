@@ -22,11 +22,18 @@ const app = express();
 // Informamos que nuestro servidor va a utilizar el sistema de plantillas EJS
 app.set('view engine', 'ejs');
 
+// Crear un middlware que lo que va a hacer es mostrar la URL por consola donde el servidor recibe peticiones, también vamos a añadir la fecha de petición
+app.use((req, res, next) => {
+    console.log(`Petición recibida: ${req.url} y en fecha ${Date()}`);
+    req.requestTime = Date();
+    next(); // continua gestionando la petición del cliente con otros endpoints
+});
 
 app.get("/", (req, res) => {
     // Le pasamos a la vista index.ejs una variable que se llama 'numPics' y cuyo es el número de elementos del array picutres
     res.render("index", {
-        numPics: pictures.length
+        numPics: pictures.length,
+        fechaPeticion: req.requestTime
     }); // Buscame la vista 'index.ejs' dentro de la carpeta 'views' y renderiza el contenido como HTML y enviáselo al cliente
 });
 
@@ -36,6 +43,7 @@ app.get("/nueva-imagen", (req, res) => {
 
 app.post("/form", (req, res) => {
     // 1. En el objeto req.body tienes toda la información que te ha enviado el formularo
+    const titulo = req.body.titulo;
 
     // 2. Tienes que crear un nuevo elemento en el array "pictures", con dicha información
 
