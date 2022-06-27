@@ -1,4 +1,5 @@
 const express = require('express');
+const { getColorFromURL } = require('color-thief-node');
 
 // Nuestra "Base de datos", sera un array de objetos
 // Que aspecto tendrá cada objeto? que propiedades tiene?
@@ -48,7 +49,20 @@ app.post("/form", (req, res) => {
     // 2. Tienes que crear un nuevo elemento en el array "pictures", con dicha información
 
     // 3. Mostrar un mensaje al usuario que diga "nueva imagne añadida" o redirigirle usando res.redirect a la página principal
+
+    // COLOR PREDOMINANTE: Conseguir obtener el color predominante y mostarlo por consola de la foto que acaban de insertar en el formulario
+});
+
+// endpoint para probar el paquete de terceros. 
+
+app.get('/get-color', async (req, res) => {
+    const dominantColor = await getColorFromURL("https://i.picsum.photos/id/41/200/200.jpg?hmac=aqB5SyMLH-ssCBN-7HaUvcDxXFFQB42WoqAHsLRIn74");
+    console.log(dominantColor);
+    res.send("Color dominante obtenido, mira el terminal en Visual Studio");
+
 })
+
+
 
 // La función de callback se ejecutará en el caso que hayamos levantado con éxito el servidor.
 app.listen(3000, () => {
